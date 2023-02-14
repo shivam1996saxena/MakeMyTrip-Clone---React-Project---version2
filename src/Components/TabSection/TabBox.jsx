@@ -8,15 +8,16 @@ import  {ImAirplane}  from "react-icons/im";
 import { MdHotel } from "react-icons/md";
 import { RiTrainFill } from "react-icons/ri";
 import { Link, unstable_HistoryRouter,  }  from "react-router-dom";
+import { grey } from "@mui/material/colors";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme)=>({
     tabs:{
         display:'flex',
         alignItems:'center',
         justifyContent:'center',
         width:'20%',
         height:'64%',
-        backgroundColor:'white',
+        color:grey[700],
         marginTop:'3%',
         borderRadius: '8px',
         // boxShadow: '0 1px 7px 0 rgb(0 0 0 / 40%)',
@@ -28,13 +29,13 @@ const useStyles = makeStyles({
         justifyContent:'center',
         width:'20%',
         height:'64%',
-        backgroundColor:'white',
+        color:grey[100],
         marginTop:'3%',
         borderRadius: '8px',
         // boxShadow: '30px 20px 20px 20px rgb(0 0 0 / 40%)',
         zIndex:'2'
     }
-})
+}))
 
 const TabBox = ({activeTab, setActiveTab, darkMode}) => {
     

@@ -14,17 +14,30 @@ import {
   import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
   import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
   import './TrainSearch.css'
+import { grey } from "@mui/material/colors";
   
-  const useStyles = makeStyles( {
+  const useStyles = makeStyles( (theme)=>({
     formBox: {
       display: "flex",
       flexDirection:'column',
       width: "70%",
       height: "90%",
       alignItems: "center",
-      backgroundColor: "white",
+      backgroundColor: grey[100],
       borderRadius: "8px",
       boxShadow: "0 1px 7px 0 rgb(0 0 0 / 40%)",
+      position: "relative",
+      top: "-30px",
+    },
+    formBoxDark: {
+      display: "flex",
+      flexDirection:'column',
+      width: "70%",
+      height: "90%",
+      alignItems: "center",
+      backgroundColor: grey[700],
+      borderRadius: "8px",
+      boxShadow: "30px 30px 7px 30 rgb(0 0 0 / 40%)",
       position: "relative",
       top: "-30px",
     },
@@ -34,7 +47,7 @@ import {
       height: "30%",
     },
     
-  });
+  }));
   const styles = makeStyles( {
       root:{
           '& .MuiButton-root': {
@@ -129,7 +142,7 @@ import {
               alignItems: "center",
             }}
           >
-            <Paper className={classes.formBox}>
+            <Paper className={darkMode ? classes.formBoxDark : classes.formBox}>
               <Box
                 sx={{
                   width: "100%",
