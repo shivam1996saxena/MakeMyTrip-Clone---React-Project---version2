@@ -59,7 +59,13 @@ const TrainSearchResult = ({
             
             >
                 <Stack direction={'row'} alignItems='center' width={'100%'} spacing={6.5}>
-                <Icon sx={{fontSize: '30px', color:'#1976d2', width:'5%'}}><RiTrainFill/></Icon>
+                <Icon 
+                sx={ 
+                    darkMode ? 
+                    {fontSize: '30px', color:'#e91e63', width:'5%'}
+                    :
+                    {fontSize: '30px', color:'#1976d2', width:'5%'}
+                }><RiTrainFill/></Icon>
                 <Typography textAlign={'center'} sx={{width:'15%', fontSize: '13px'}} >
                 {`Train number `}<strong>{data.train_number}</strong>
                 </Typography>
