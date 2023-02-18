@@ -9,7 +9,7 @@ const TabSection = ( {activeTab, setActiveTab}) => {
             sx={{
               // background:'linear-gradient(to bottom,#051322,#15457c)', 
               w:'100%',
-              mt:'64px'
+              mt:{xs:'90px',lg:'64px'}
               }}>
               <TabBox activeTab={activeTab} setActiveTab={setActiveTab}/>
             </Box>

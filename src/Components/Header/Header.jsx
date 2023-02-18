@@ -26,8 +26,13 @@ const Header = ({setDarkMode, darkMode}) => {
 
   return <> 
            <AppBar>
-            <Toolbar> <Box width={'100%'} display='flex' justifyContent={'center'}>
-                      <Box  
+            <Toolbar 
+            sx={{
+              display:'flex',
+              justifyContent:{lg:'space-betweeen',md:'space-evenly',sm:'space-between'}
+            }}
+            > 
+                      {/* <Box  
                       sx={{
                         display:'flex',
                         width:{xs:'100%',sm:'100%',md:'80%',lg:'80%'},
@@ -35,13 +40,12 @@ const Header = ({setDarkMode, darkMode}) => {
                         paddingLeft:'5%',
                         paddingRight:'5%'
                       }}
-                      className={classes.navbar}>
+                      className={classes.navbar}> */}
                         
                           <LogoBox />
                           <NavTab/>
                           <UserTab username={username} setDarkMode={setDarkMode} darkMode={darkMode}/>
-                        </Box>
-                        </Box>
+                        {/* </Box> */}
             </Toolbar>
            </AppBar>
         </>;

@@ -1,7 +1,7 @@
 import "./App.css";
 import "@fontsource/roboto";
 import Login from "./Components/Login/Login";
-import { createMuiTheme, createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import {  createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { Paper } from "@mui/material";
 import MasterFlight from "./Components/Flights/MasterFlight";
 import { useState } from "react";
@@ -35,11 +35,13 @@ function App(props) {
         main:'#e91e63'
       }
     },
+    
   })
   const lightTheme = createTheme ({
     palette: {
       type: 'light',
     },
+    
   })
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>

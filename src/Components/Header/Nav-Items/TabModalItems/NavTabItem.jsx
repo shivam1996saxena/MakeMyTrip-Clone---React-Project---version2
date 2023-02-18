@@ -7,9 +7,11 @@ import {
   DialogContent,
   DialogTitle,
   Divider,
+  Icon,
   IconButton,
   TextField,
   Typography,
+
 } from "@mui/material";
 import { display } from "@mui/system";
 import React, { useState } from "react";
@@ -17,6 +19,7 @@ import { makeStyles } from "@mui/styles";
 import styled, { keyframes } from "styled-components";
 import { set } from "date-fns";
 import { FcGoogle } from "react-icons/fc";
+import {CiBadgeDollar} from 'react-icons/ci'
 
 const styles = makeStyles({
   personalAccount: {
@@ -93,45 +96,64 @@ const NavTabItem = (props) => {
       <Box
         sx={{
           width: { xs: "20%", sm: "20%", md: "25%", lg: "25%" },
+          flexBasis:{xs:'30%',md:'30%',sm:'30%',lg:'20%'},
           display: "flex",
           alignItems: "center",
           cursor: "pointer",
+          gap:{xs:0,sm:1,md:2,lg:2},
+          flexDirection:{xs:'column',sm:'row',md:'row', lg:'row'}
         }}
         onClick={
           props.value === "offers" ? handleOfferDialogue : handleTripDialogue
         }
       >
         <Box
-          width={"25%"}
-          display="flex"
-          fontSize={"25px"}
-          justifyContent={"center"}
-          alignItems={"center"}
-        >
-          {props.icon}
+        sx={{
+          w:{xs:'100%',lg:'25%'},
+          minHeight:{xs:'50%',lg:'auto'},
+          display:'flex',
+          fontSize:{xs:'30px',md:'33px',lg:'25px'},
+          justifyContent:'center',
+          alignItems:'center'
+        }}
+        > 
+        {props.icon}
         </Box>
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
-            width: "80%",
+            w:{xs:'100%',lg:'80%'},
+            height:{sm:64,md:64,lg:64},
+            justifyContent:{sm:'center',md:'center',lg:'center'},
+            cursor:'pointer',
+            alignItems:{xs:'center'}
           }}
         >
           <Typography
-            height={"50%"}
-            width={"75%"}
-            textAlign="end"
-            fontSize={"12px"}
-            fontWeight="500"
+            sx={{
+            fullWidth:{xs:true},
+              height:"50%",
+              display:'flex',
+                    alignItems:{sm:'end',md:'end',lg:'end'},
+            // width:"75%",
+            textAlign:{xs:'center', lg:'end'},
+            fontSize:{xs:'12px',sm:11,lg:'12px'},
+            fontWeight:{lg:'500',md:'500',xs:'300'},
+            component:'p',
+            }}
           >
             {props.heading}
           </Typography>
           <Typography
-            height={"50%"}
-            variant="subtitle"
-            width={"80%"}
-            textAlign="end"
-            fontSize={"8.5px"}
+            sx={{
+            height:"50%",
+            display:{xs:'none',sm:'flex',md:'flex',lg:'flex'},
+            variant:"subtitle",
+            // width:"80%",
+            textAlign:{lg:'end'},
+            fontSize:{md:'8.5px',lg:"8.5px", sm:9}
+            }}
           >
             {props.description}
           </Typography>

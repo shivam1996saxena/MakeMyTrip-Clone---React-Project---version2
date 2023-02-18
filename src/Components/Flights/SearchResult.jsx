@@ -42,56 +42,124 @@ const SearchResult = ({
       sx={{
         display:'flex',
         justifyContent:'center',
-        paddingLeft:'0px'
+        padding:'0px'
       }}
       >
         <Paper 
         sx={{
             width:'90%',
-        }}
+        }}  
         >
             {filteredflights.length>0
             ? filteredflights.map((data, index) => (
             <>
-            <Accordion expanded={expanded === `panel${index+1}`} onChange={handleChange(`panel${index+1}`)} sx={{padding: '0px 50px'}}>
+            <Accordion expanded={expanded === `panel${index+1}`} onChange={handleChange(`panel${index+1}`)} 
+            sx={{
+                padding:{xs:'0px 0px', lg:'0px 50px'},
+                width:'100%',
+            }}>
             <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1bh-content"
             id="panel1bh-header"
-            
+            fullWidth
             >
-                <Stack direction={'row'} alignItems='center' width={'100%'} spacing={6.5}>
+                <Stack direction={'row'}   
+                sx={{
+                    display:'flex',
+                    gap:{lg:'72px',xs:'20px'},
+                    alignItems:'center',
+                    '& .MuiAccordionSummary-root':{
+                    padding:0,
+                    }   
+
+                }}
+                >
                 <Icon 
                 sx={ 
                     darkMode ? 
-                    {fontSize: '22px', color:'#e91e63', width:'5%'}
+                    {fontSize: '22px', color:'#e91e63', flexBasis:{lg:'5%',xs:'10%'}}
                     :
-                    {fontSize: '22px', color:'#1976d2', width:'5%'}
+                    {fontSize: '22px', color:'#1976d2', flexBasis:{lg:'5%',xs:'10%'}}
                 }
                 ><ImAirplane /></Icon>
-                <Typography textAlign={'center'} sx={{width:'15%'}} >
+                <Typography
+                sx={{
+                    flexBasis:{lg:'5%',xs:'15%'},
+                    fontSize:{lg:'17px',xs:12},
+                    textAlign:'center' 
+                    }} >
                 {data.airlineName}
                 </Typography>
-                <Typography textAlign={'center'} variant='h3' width='10%' fontSize={'17px'}>{data.departure.departureTime}</Typography>
-                <Typography textAlign={'center'} fontWeight='600' component={'p'} width='10%' variant='h2' fontSize={'17px'} >{data.from}</Typography>
-                <Box
-                display={'flex'}
-                flexDirection='column'
-                width='30%'
+                <Typography variant='h3'
+                sx={{
+                    // width:'10%',
+                    flexBasis:{lg:'10%',xs:'13%'},
+                    fontSize:{lg:'17px',xs:11},
+                    textAlign:'center'
+                    }}
                 >
-                    <Typography textAlign={'center'} component={'p'}>{data.duration}</Typography>
+                    {data.departure.departureTime}
+                </Typography>
+                <Typography component={'p'}  variant='h2' 
+                sx={{
+                    flexBasis:{lg:'10%',xs:'17%'},
+                    fontSize:{lg:'17px',xs:13},
+                    textAlign:'center',
+                    fontWeight:'600'
+                    }}
+                >
+                    {data.from}
+                </Typography>
+                <Box
+                sx={{
+                    display:'flex',
+                    flexDirection:'column',
+                    flexBasis:'20%'
+                }}
 
-                    <Divider/>
+                >
+                    <Typography textAlign={'center'} component={'p'}
+                    sx={{
+                        width:'100%',
+                        fontSize:{lg:17,xs:12},
+                        textAlign:{lg:'center',xs:'center'}
+                    }}
+                    fullWidth
+                    >{data.duration}</Typography>
 
-                    <Typography textAlign={'center'} component={'p'}>{!data.via.length>0 ? "Direct" : data.via}</Typography>
+                    <Divider sx={{width:'100%',}} fullWidth/>
+
+                    <Typography fullWidth textAlign={'center'} component={'p'}
+                    sx={{
+                        width:'100%',
+                        fontSize:{lg:17,xs:12}
+                    }}
+                    >
+                        {!data.via.length>0 ? "Direct" : data.via}
+                    </Typography>
                 </Box>
-                <Typography textAlign={'center'} fontSize={'17px'} width={'10%'} variant='h3'>{data.departure.departureTime}</Typography>
-                <Typography textAlign={'center'} fontSize={'17px'} fontWeight='600' width={'10%'} variant='h2' component={'p'}>{data.to}</Typography>
+                <Typography  variant='h3'
+                sx={{
+                    textAlign:'center',
+                    fontSize:{lg:17,xs:11},
+                    flexBasis:{lg:'10%',xs:'13%'},
+                }}
+                >{data.departure.departureTime}</Typography>
+                <Typography variant='h2' component={'p'}
+                sx={{
+                    fontWeight:'600',
+                    flexBasis:{lg:'10%',xs:'13%'},
+                    fontSize:{lg:17,xs:13},
+                    textAlign:{lg:'center', xs:'end'},
+                    ml:{lg:0,xs:1,sm:0}
+                }}
+                >{data.to}</Typography>
                 </Stack>
             </AccordionSummary>
             <AccordionDetails
             sx={{
-                padding:'0px 100px'
+                padding:{lg:'0px 100px', xs:'0px 0px'}
             }}
             >
                 <Box
@@ -103,28 +171,51 @@ const SearchResult = ({
                 sx={{
                     display:'flex',
                     flexDirection:'column',
-                    gap:'3px',
-                    width:'60%'
+                    gap:{lg:'3px',xs:'2px'},
+                    width:{lg:'60%', xs:'55%'}
                 }}
                 fullWidth
                 >
                 <Typography component='p' 
                 sx={{
+                    p:{lg:'0px 0px', xs:'0px 15px'},
                     width:'100%'
                 }}
                 >
                         Flight Details :
                 </Typography>
-                <Typography component={'p'} variant='h4' fontWeight={'600'} fontSize='16px' p={'0px 30px'}>
+                <Typography
+                sx={{
+                    fontWeight:'600',
+                    fontSize:{lg:'16px',xs:'13px'}, 
+                    p:{lg:'0px 30px', xs:'0px 15px'}
+                }}
+                component={'p'} variant='h4' >
                     {`From : ${data.from}`}
                 </Typography>
-                <Typography component={'p'} variant='h4' fontWeight={'600'} fontSize='16px' p={'0px 30px'}>
+                <Typography component={'p'} variant='h4' 
+                sx={{
+                    fontWeight:'600',
+                    fontSize:{lg:'16px',xs:'13px'}, 
+                    p:{lg:'0px 30px', xs:'0px 15px'}
+                }}
+                >
                     {`To : ${data.to}`}
                 </Typography>
-                <Typography component={'p'} variant='subtitle2' fontSize='14px' p={'0px 30px'}>
+                <Typography component={'p'} variant='subtitle2' 
+                sx={{
+                    fontSize:{lg:'14px',xs:'12px'}, 
+                    p:{lg:'0px 30px', xs:'0px 15px'}
+                }}
+                >
                 {`Departure Date : ${data.departure.departureDate} | ${data.departure.departureTime}`}  
                 </Typography>
-                <Typography component={'p'} variant='subtitle2' fontSize='14px' p={'0px 30px'}>
+                <Typography component={'p'} variant='subtitle2' 
+                sx={{
+                    fontSize:{lg:'14px',xs:'12px'}, 
+                    p:{lg:'0px 30px', xs:'0px 15px'}
+                }}
+                >
                 {trip === 'round' ? `Return Date : ${data.return.returnDate} | ${data.return.returnTime}` : 'Return Date : Round trip is turned off' }
                 </Typography>
                 </Box>
@@ -134,7 +225,7 @@ const SearchResult = ({
                     width:'20%',
                     justifyContent:'center',
                     alignItems:'center',
-                    gap:'30px'
+                    gap:{lg:'30px',xs:'10px'}
                 }}
                 >
                     <Icon 
@@ -148,14 +239,19 @@ const SearchResult = ({
                     >
                         <HiCurrencyRupee />
                     </Icon>
-                    <Typography variant='h3' fontWeight={'800'} fontSize={'25px'}>
+                    <Typography variant='h3' 
+                    sx={{
+                        fontSize:{lg:'25px', xs:'22px'},
+                        fontWeight:'800',
+                    }}
+                    >
                         {trip === 'round' ? `${parseInt(data.price)*2}` : `${data.price}`}
                     </Typography>
                 </Box>
                 <Box
                 sx={{
                     display:'flex',
-                    width:'20%',
+                    width:{lg:'20%', xs:'25%'},
                     justifyContent:'center',
                     alignItems:'center'
                 }}
@@ -163,11 +259,11 @@ const SearchResult = ({
                     <Button variant='contained'
                     color= 'primary' 
                     sx={{
-                        width:'90%',
+                        width:{lg:'90%',xs:'80%'},
                         height:'35%',
-                        padding:'20px 0px',
-                        borderRadius:'10px',
-                        ml:3
+                        padding:{lg:'20px 0px', xs:'0px 0px'},
+                        borderRadius:{lg:'10px', xs:1},
+                        ml:{lg:3, xs:'1px'}
                     }}
                     
                     component={Link}

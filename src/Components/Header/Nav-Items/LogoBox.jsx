@@ -6,17 +6,18 @@ const LogoBox = () => {
   return <>
             <Box
             sx={{
-                width:{xs:'20%',sm:'20%',md:'15%',lg:'15%'},
+                width:{xs:'15%',sm:'20%',md:'15%',lg:'15%'},
                 display:'flex',
-                justifyContent:'center',
+                justifyContent:{sm:'center',md:'center',lg:'center'},
                 alignItems:'center',
-                cursor:'pointer'
+                cursor:'pointer',
+                flexBasis:{sm:'15%',md:'20%',lg:'15%'}
             }}
             >
             <Box
             component={'img'}
             sx={{
-                width:{xs:'100%',sm:'100%',md:'85%',lg:'70%'}
+                width:{xs:'100%',sm:'80%',md:'50%',lg:'38%'}
             }}
             src={logo}
             />   

@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme)=>({
         display:'flex',
         alignItems:'center',
         justifyContent:'center',
-        width:'20%',
+        width:{xs:'90%',lg:'20%'},
         height:'64%',
         color:grey[700],
         marginTop:'3%',

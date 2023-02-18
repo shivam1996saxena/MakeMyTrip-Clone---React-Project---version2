@@ -25,7 +25,7 @@ const useStyles = makeStyles( {
   formBox: {
     display: "flex",
     flexDirection:'column',
-    width: "70%",
+    // width: "70%",
     height: "90%",
     alignItems: "center",
     background: grey[100],
@@ -46,10 +46,10 @@ const useStyles = makeStyles( {
     position: "relative",
     top: "-30px",
   },
-  pickerFormat: {
-    position: "relative",
-    width: "18%",
-  },
+  // pickerFormat: {
+  //   position: "relative",
+  //   // width: "18%",
+  // },
   
 });
 const styles = makeStyles( {
@@ -130,7 +130,7 @@ const HotelSearch = ({
   return (
     <>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <Paper
+      <Box
           sx={{
             width: "100%",
             height: "260px",
@@ -139,14 +139,18 @@ const HotelSearch = ({
             alignItems: "center",
           }}
         >
-          <Paper className={darkMode ? classes.formBoxDark : classes.formBox}>
+          <Paper className={darkMode ? classes.formBoxDark : classes.formBox}
+          sx={{width:{xs:'90%',sm:'85%',md:'85%',lg:'70%'}}}
+          >
                 <Box
                 sx={{
                   width:'100%',
                   mt:'4%',
                   display:'flex',
-                  gap:'3%',
-                  padding:'30px 20px'
+                  gap:{lg:'3%',md:'3%',sm:'10%',xs:'5%'},
+                  padding:{lg:'30px 20px',md:'30px 0px',sm:'20px 0px',xs:'20px 0px'},
+                  flexWrap:{xs:'wrap',sm:'wrap',md:'nowrap'},
+                  justifyContent:{xs:'start',sm:'center',md:'start'}
                 }}
                 >
                   <Autocomplete
@@ -156,9 +160,15 @@ const HotelSearch = ({
                     options={cityData}
                     
                     sx={{
-                      width: "20%",
+                      width:{xs:180,sm:250,md:250,lg:250},
+                      // flexBasis: '25%',
                       height: "30%",
-                      ml: "10%",
+                      '& .MuiInputBase-root':{
+                          sm:{height:57},
+                          xs:{height:57},
+                          md:{height:57}
+                      },
+                      ml: {xs:"2%",sm:"0",md:"2%",lg:"10%"},
                     }}
                     value={city}
                     onChange={(e, newValue) => {
@@ -179,6 +189,12 @@ const HotelSearch = ({
                     value={checkInDate}
                     onChange={handleTodayDate}
                     renderInput={(params) => <TextField {...params} />}
+                    InputProps= {{
+                      sx:{ 
+                        width:{xs:155,sm:"85%",md:"75%",lg:"90%"},
+                        height:{sm:50,xs:57,md:60}
+                       }
+                    }}
                   />
                   <DesktopDatePicker
                     className={classes.pickerFormat}
@@ -189,8 +205,19 @@ const HotelSearch = ({
                     renderInput={(params) => <TextField {...params} />}
                     // disabled={active ? true : false}
                     // onClick={handleDisable}
+                    InputProps= {{
+                      sx:{ 
+                        width:{xs:185,sm:"85%",md:"75%",lg:"90%"},
+                        height:{sm:50,xs:57,md:60},
+                        
+                        ml: {xs:'2%',sm:"0",md:"0%",lg:"0%"},
+                       }
+                    }}
                   />
-                  <FormControl sx={{minWidth:180}}>
+                  <FormControl sx={{
+                    width:{xs:160,sm:250,md:250,lg:250},
+                  }}
+                  >
                         <InputLabel id="demo-simple-select-helper-label">
                             No. of Guests
                         </InputLabel>
@@ -225,36 +252,36 @@ const HotelSearch = ({
                 sx={
                   darkMode ?
                   {
-                    width:'20%',
-                    height:'100%',
+                    width:{lg:'20%',md:'30%',sm:'60%',xs:'60%'},
+                    height:{lg:'100%',md:'80%',sm:'60%',xs:'60%'},
                     borderRadius:15,
                     color:'white',
                     padding:'15px 30px',
                     background: ' linear-gradient(to right, #ec008c, #fc6767);',
                     border:0,
-                    fontSize:'25px',
+                    fontSize:{lg:'25px',md:'22px',sm:'20px',xs:'20px'},
                     position:'relative',
-                    top:'45px'
+                    top:{lg:'45px',md:'45px',sm:'-20px',xs:'-20px'}
                   }
                    :
                   {
-                    width:'20%',
-                    height:'100%',
+                    width:{lg:'20%',md:'30%',sm:'60%',xs:'60%'},
+                    height:{lg:'100%',md:'80%',sm:'60%',xs:'60%'},
                     borderRadius:15,
                     color:'white',
                     padding:'15px 30px',
                     background:'linear-gradient(93deg,#53b2fe,#065af3)',
                     border:0,
-                    fontSize:'25px',
+                    fontSize:{lg:'25px',md:'22px',sm:'20px',xs:'20px'},
                     position:'relative',
-                    top:'45px'
+                    top:{lg:'45px',md:'58px',sm:'38px',xs:'42px'}
                   }
                 }
                 onClick={handleSarch}
                 >SEARCH</Button>
             </Box>
             </Paper>
-          </Paper>
+          </Box>
       </LocalizationProvider>
     </>
   )
