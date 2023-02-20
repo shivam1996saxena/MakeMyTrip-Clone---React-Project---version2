@@ -42,12 +42,14 @@ const SearchResult = ({
       sx={{
         display:'flex',
         justifyContent:'center',
-        padding:'0px'
+        padding:'0px',
+        height:'100%'
       }}
       >
         <Paper 
         sx={{
             width:'90%',
+            height:'100%'
         }}  
         >
             {filteredflights.length>0
@@ -67,26 +69,27 @@ const SearchResult = ({
                 <Stack direction={'row'}   
                 sx={{
                     display:'flex',
-                    gap:{lg:'72px',xs:'20px'},
+                    gap:{lg:'72px',xs:'15px',md:'72px'},
+                    flexGrow:'',
+                    justifyContent:{md:'space-between'},
                     alignItems:'center',
                     '& .MuiAccordionSummary-root':{
                     padding:0,
                     }   
-
                 }}
                 >
                 <Icon 
                 sx={ 
                     darkMode ? 
-                    {fontSize: '22px', color:'#e91e63', flexBasis:{lg:'5%',xs:'10%'}}
+                    {fontSize: '22px', color:'#e91e63', flexBasis:{lg:'5%',md:'5%',xs:'10%'}}
                     :
-                    {fontSize: '22px', color:'#1976d2', flexBasis:{lg:'5%',xs:'10%'}}
+                    {fontSize: '22px', color:'#1976d2', flexBasis:{lg:'5%',md:'5%',xs:'10%'}}
                 }
                 ><ImAirplane /></Icon>
                 <Typography
                 sx={{
-                    flexBasis:{lg:'5%',xs:'15%'},
-                    fontSize:{lg:'17px',xs:12},
+                    flexBasis:{lg:'5%',xs:'15%',md:'5%'},
+                    fontSize:{lg:'17px',md:'15px',xs:12},
                     textAlign:'center' 
                     }} >
                 {data.airlineName}
@@ -94,8 +97,8 @@ const SearchResult = ({
                 <Typography variant='h3'
                 sx={{
                     // width:'10%',
-                    flexBasis:{lg:'10%',xs:'13%'},
-                    fontSize:{lg:'17px',xs:11},
+                    flexBasis:{lg:'10%',xs:'13%',md:'10%'},
+                    fontSize:{lg:'17px',xs:11,md:'15px'},
                     textAlign:'center'
                     }}
                 >
@@ -103,8 +106,8 @@ const SearchResult = ({
                 </Typography>
                 <Typography component={'p'}  variant='h2' 
                 sx={{
-                    flexBasis:{lg:'10%',xs:'17%'},
-                    fontSize:{lg:'17px',xs:13},
+                    flexBasis:{lg:'10%',xs:'17%',md:'10%'},
+                    fontSize:{lg:'17px',xs:13,md:'16px'},
                     textAlign:'center',
                     fontWeight:'600'
                     }}
@@ -115,14 +118,14 @@ const SearchResult = ({
                 sx={{
                     display:'flex',
                     flexDirection:'column',
-                    flexBasis:'20%'
+                    flexBasis:'20%',
                 }}
 
                 >
                     <Typography textAlign={'center'} component={'p'}
                     sx={{
                         width:'100%',
-                        fontSize:{lg:17,xs:12},
+                        fontSize:{lg:17,xs:12,md:'16px'},
                         textAlign:{lg:'center',xs:'center'}
                     }}
                     fullWidth
@@ -133,7 +136,7 @@ const SearchResult = ({
                     <Typography fullWidth textAlign={'center'} component={'p'}
                     sx={{
                         width:'100%',
-                        fontSize:{lg:17,xs:12}
+                        fontSize:{lg:17,xs:12,md:'15px'}
                     }}
                     >
                         {!data.via.length>0 ? "Direct" : data.via}
@@ -142,16 +145,16 @@ const SearchResult = ({
                 <Typography  variant='h3'
                 sx={{
                     textAlign:'center',
-                    fontSize:{lg:17,xs:11},
-                    flexBasis:{lg:'10%',xs:'13%'},
+                    fontSize:{lg:17,xs:11,md:'15px'},
+                    flexBasis:{lg:'10%',xs:'13%',md:'10%'},
                 }}
                 >{data.departure.departureTime}</Typography>
                 <Typography variant='h2' component={'p'}
                 sx={{
                     fontWeight:'600',
-                    flexBasis:{lg:'10%',xs:'13%'},
-                    fontSize:{lg:17,xs:13},
-                    textAlign:{lg:'center', xs:'end'},
+                    flexBasis:{lg:'10%',xs:'13%',md:'10%'},
+                    fontSize:{lg:17,xs:13,md:'15px'},
+                    textAlign:{lg:'center', xs:'end',md:'center'},
                     ml:{lg:0,xs:1,sm:0}
                 }}
                 >{data.to}</Typography>
@@ -159,7 +162,7 @@ const SearchResult = ({
             </AccordionSummary>
             <AccordionDetails
             sx={{
-                padding:{lg:'0px 100px', xs:'0px 0px'}
+                padding:{lg:'0px 100px', xs:'0px 0px',md:'0px 80px'}
             }}
             >
                 <Box
@@ -261,6 +264,7 @@ const SearchResult = ({
                     sx={{
                         width:{lg:'90%',xs:'80%'},
                         height:'35%',
+                        fontSize:{xs:'12px',lg:'14px'},
                         padding:{lg:'20px 0px', xs:'0px 0px'},
                         borderRadius:{lg:'10px', xs:1},
                         ml:{lg:3, xs:'1px'}

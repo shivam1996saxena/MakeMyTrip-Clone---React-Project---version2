@@ -75,14 +75,29 @@ const HotelSearchResult = ({
           {filteredHotels.length>0
             ? filteredHotels.map((data, index) => (
             <>
-            <Accordion expanded={expanded === `panel${index+1}`} onChange={handleChange(`panel${index+1}`)} sx={{padding: '0px 50px'}}>
+            <Accordion expanded={expanded === `panel${index+1}`} onChange={handleChange(`panel${index+1}`)} 
+            sx={{
+                padding:{xs:'0px 0px', lg:'0px 50px'},
+                width:'100%',
+            }}
+            >
             <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1bh-content"
             id="panel1bh-header"
             
             >
-                <Stack direction={'row'} alignItems='center' width={'100%'} spacing={6.5}>
+                <Stack direction={'row'} 
+                sx={{
+                    display:'flex',
+                    gap:{lg:'72px',xs:'18px',md:'72px'},
+                    flexGrow:'',
+                    justifyContent:{md:'space-between'},
+                    alignItems:'center',
+                    '& .MuiAccordionSummary-root':{
+                    padding:'0px',
+                    }
+                }}>
                 <Icon 
                 sx={ 
                     darkMode ? 
@@ -92,28 +107,52 @@ const HotelSearchResult = ({
                 }>
                         <MdHotel/>
                 </Icon>
-                <Typography textAlign={'center'} sx={{width:'10%'}} >
+                <Typography textAlign={'center'} sx={{width:'10%',fontSize:{lg:'17px',md:'15px',xs:14},}} >
                 {data.city}
                 </Typography>
 
-                <Typography textAlign={'center'} fontWeight='300' component={'p'} width='18%' variant='subtitle2' fontSize={'14spx'} >{`Hotel : ${data.hotel_name}`}</Typography>
+                <Typography 
+                sx={{
+                    textAlign:'center',
+                    fontWeight:'300',
+                    width:'18%',
+                    variant:'subtitle2',
+                    fontSize:{lg:'14px',md:'14px',xs:12}
+                }}
+                component={'p'}
+                >{`Hotel : ${data.hotel_name}`}</Typography>
                 <Box
                 display={'flex'}
                 flexDirection='column'
                 width='30%'
                 >
-                    <Typography textAlign={'center'} fontSize={'15px'} component={'p'}>
+                    <Typography 
+                    sx={{
+                        textAlign:'center', 
+                        fontSize:{lg:'15px',md:'14px',xs:'13px'}
+                    }}
+                    component={'p'}>
                         Check-in : {getFormattedDate(checkInDate)}
                     </Typography>
                     <Divider/>
-                    <Typography textAlign={'center'} fontSize={'15px'} component={'p'}>Check-out : {getFormattedDate(checkOutDate)}</Typography>
+                    <Typography 
+                    sx={{
+                        textAlign:'center', 
+                        fontSize:{lg:'15px',md:'14px',xs:'13px'}
+                    }}
+                    component={'p'}>Check-out : {getFormattedDate(checkOutDate)}</Typography>
                 </Box>
-                <Typography textAlign={'center'} fontSize={'15px'} width={'10%'} variant='h5'><strong>Room type</strong><br/>{`${data.room_type}`}</Typography>
+                <Typography 
+                sx={{
+                    textAlign:'center', 
+                    fontSize:{lg:'15px',md:'14px',xs:'13px'}
+                }}
+                width={'10%'} variant='h5'><strong>Room type</strong><br/>{`${data.room_type}`}</Typography>
                 </Stack>
             </AccordionSummary>
             <AccordionDetails
             sx={{
-                padding:'0px 80px'
+                padding:{lg:'0px 100px', xs:'0px 0px',md:'0px 80px'}
             }}
             >
                 <Box
@@ -125,8 +164,8 @@ const HotelSearchResult = ({
                 sx={{
                     display:'flex',
                     flexDirection:'column',
-                    gap:'3px',
-                    width:'50%'
+                    gap:{lg:'3px',xs:'2px'},
+                    width:{lg:'50%', xs:'48%'}
                 }}
                 fullWidth
                 >
@@ -137,22 +176,62 @@ const HotelSearchResult = ({
                 >
                         Hotel Details :
                 </Typography>
-                <Typography component={'p'} variant='h4' fontSize='16px' p={'0px 30px'}>
+                <Typography 
+                sx={{
+                    fontWeight:'600',
+                    fontSize:{lg:'16px',xs:'13px'}, 
+                    p:{lg:'0px 30px', xs:'0px 15px'}
+                }}
+                component={'p'} variant='h4' fontSize='16px' p={'0px 30px'}>
                 {`City : ${data.city}`}  
                 </Typography>
-                <Typography component={'p'} variant='subtitle2' fontSize='14px' p={'0px 30px'}>
+                <Typography
+                sx={{
+                    fontSize:{lg:'14px',xs:'12px'},  
+                    p:{lg:'0px 30px', xs:'0px 15px'}
+                }}
+                component={'p'} variant='subtitle2' p={'0px 30px'}>
                 {`Hotel Name : ${data.hotel_name}`} <br /><strong> Ratings : {`${data.rating}/10`}</strong>   
                 </Typography>
-                <Typography component={'p'} variant='h4' fontWeight={'800'} fontSize='14px' p={'0px 30px'}>
+                <Typography 
+                sx={{
+                    fontWeight:'600',
+                    fontSize:{lg:'14px',xs:'12px'},
+                    p:{lg:'0px 30px', xs:'0px 15px'}
+                }}
+                component={'p'} variant='h4' >
                     From : {getFormattedDate(checkInDate)}
                 </Typography>
-                <Typography component={'p'} variant='h4' fontWeight={'800'} fontSize='14px' p={'0px 30px'}>
+                <Typography 
+                component={'p'} 
+                variant='h4' 
+                sx={{
+                    fontWeight:'600',
+                    fontSize:{lg:'14px',xs:'12px'},
+                    p:{lg:'0px 30px', xs:'0px 15px'}
+                }}
+                >
                    To : {getFormattedDate(checkOutDate)}
                 </Typography>
-                <Typography component={'p'} variant='subtitle2' fontSize='14px' p={'0px 30px'}>
+                <Typography 
+                component={'p'} 
+                variant='subtitle2' 
+                sx={{
+                    fontSize:{lg:'14px',xs:'12px'},
+                    p:{lg:'0px 30px', xs:'0px 15px'}
+                }}
+                >
                 {`Room Type : ${data.room_type}`}  
                 </Typography>
-                <Typography component={'p'} variant='subtitle2' fontSize='14px' fontWeight='600' p={'0px 30px'}>
+                <Typography 
+                component={'p'} 
+                variant='subtitle2' 
+                sx={{
+                    fontWeight:'600',
+                    fontSize:{lg:'14px',xs:'12px'},
+                    p:{lg:'0px 30px', xs:'0px 15px'}
+                }}
+                >
                 {`Slected Guests : ${guests}`}  
                 </Typography>
                 </Box>
@@ -160,7 +239,7 @@ const HotelSearchResult = ({
                 sx={{
                     display:'flex',
                     flexDirection:'column',
-                    width:'20%',
+                    width:{lg:'20%',xs:'25%'},
                     justifyContent:'center',
                     gap:'30px'
                 }}
@@ -168,15 +247,23 @@ const HotelSearchResult = ({
                     <Icon 
                     sx={ 
                         darkMode ? 
-                        {fontSize: '30px', color:'#e91e63'}
+                        {fontSize: {lg:'30px',xs:'25px'}, color:'#e91e63'}
                         :
-                        {fontSize: '30px', color:'#1976d2',}
+                        {fontSize: {lg:'30px',xs:'25px'}, color:'#1976d2',}
                     }
                     color={'success'}
                     >
                         <HiCurrencyRupee />
                     </Icon>
-                    <Typography textAlign={'center'} variant='h3' fullWidth fontWeight={'800'} fontSize={'16px'}>
+                    <Typography  
+                    variant='h3'
+                    sx={{
+                        textAlign:'center',
+                        fontWeight:'800',
+                        fontSize: {lg:'16px',xs:'12px'}
+                    }} 
+                    fullWidth
+                    >
                         {guests >= 2 ?  `Total Price : ${(parseInt(data.price_per_night)/2)*guests}` : `${data.price_per_night}` }
                     </Typography>
                     </Box>
@@ -192,7 +279,18 @@ const HotelSearchResult = ({
                     >
                         <HiCurrencyRupee />
                     </Icon>
-                    <Typography textAlign={'center'} fullWidth variant='h3' fontWeight={'800'} fontSize={'12px'}>
+                    <Typography 
+                     
+                    fullWidth 
+                    variant='h3' 
+                    
+                    
+                    sx={{
+                        fontSize:'12px',
+                        textAlign:'center',
+                        fontWeight:'800'
+                    }}
+                    >
                         {`Rent charges/Night : ${data.price_per_night}`}
                     </Typography>
                     </Box>
@@ -200,20 +298,22 @@ const HotelSearchResult = ({
                 <Box
                 sx={{
                     display:'flex',
-                    width:'20%',
+                    width:{lg:'20%',xs:'25%'},
                     justifyContent:'center',
                     alignItems:'center',
-                    ml:'14%'
+                    ml:{lg:'14%',xs:'0px'}
                 }}
                 >
                     <Button variant='contained'
                     color= 'primary'
                     sx={{
-                        width:'90%',
+                        width:{lg:'90%', xs:'70%'},
                         height:'25%',
                         padding:'20px 0px',
                         borderRadius:'10px',
-                        ml:3
+                        ml:{lg:3,xs:0},
+                        textAlign:'center',
+                        fontSize:{lg:'14px',xs:'11px'}
                     }}
                     component={Link}
                     to={'/payment'}

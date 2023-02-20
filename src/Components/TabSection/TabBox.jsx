@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme)=>({
         width:{xs:'90%',lg:'20%'},
         height:'64%',
         color:grey[700],
-        marginTop:'3%',
+        // marginTop:'3%',
         borderRadius: '8px',
         // boxShadow: '0 1px 7px 0 rgb(0 0 0 / 40%)',
         zIndex:'2'
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme)=>({
         width:'20%',
         height:'64%',
         color:grey[100],
-        marginTop:'3%',
+        // marginTop:'3%',
         borderRadius: '8px',
         // boxShadow: '30px 20px 20px 20px rgb(0 0 0 / 40%)',
         zIndex:'2'
@@ -60,6 +60,10 @@ const TabBox = ({activeTab, setActiveTab, darkMode}) => {
             justifyContent='center'
              >
                 <Paper
+                sx={{
+                    mt:{lg:'3%',xs:'0.5%'}
+                }}
+                
                 className={darkMode ? classes.darkMode : classes.tabs}
                 // height={'64px'}
                 // w='70%'
